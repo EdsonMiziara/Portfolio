@@ -1,12 +1,11 @@
-/* Importar fontes do Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap');
 
 :root {
-    --primary-color: #00A99D; /* Cor turquesa principal */
-    --secondary-color: #333; /* Cor escura para texto principal */
+    --primary-color: #00A99D; 
+    --secondary-color: #333; 
     --light-grey: #f2f2f2;
     --white: #ffffff;
-    --dark-green: #008077; /* Um tom mais escuro do primário */
+    --dark-green: #008077; 
 }
 
 body {
@@ -34,7 +33,6 @@ main {
     background-repeat: no-repeat;
     position: relative;
     overflow: hidden;
-    /* Animação */
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -132,7 +130,6 @@ p {
     color: var(--white);
 }
 
-/* SEÇÃO HOME */
 #home {
     background-image: url('1.jpg');
     text-align: left;
@@ -145,13 +142,12 @@ p {
 }
 
 #home .dot-net {
-    color: #000; /* .NET em preto */
+    color: #000; 
 }
 #home h1 {
-    color: var(--primary-color); /* Developer em turquesa */
+    color: var(--primary-color); 
 }
 
-/* SEÇÃO SOBRE MIM */
 #sobre {
     background-color: var(--light-grey);
     color: var(--secondary-color);
@@ -196,27 +192,31 @@ p {
     font-size: 1.2em;
 }
 
-/* SEÇÃO FORMAÇÃO E EXPERIÊNCIA */
 #formacao {
     background-color: var(--white);
     color: var(--secondary-color);
 }
 
 #formacao .formacao-experiencia {
-    justify-content: space-around;
     padding: 80px 0;
-    text-align: left;
+    width: 100%; 
 }
 
 #formacao h2 {
     color: var(--secondary-color);
-    font-size: 3em;
+    font-size: 3em; 
+    line-height: 1.2; 
     margin-bottom: 30px;
+
+    text-align: center;
+    min-height: 7.2em;
+    display: flex;              
+    justify-content: center;    
+    align-items: center;       
 }
 
 #formacao .formacao-col,
 #formacao .experiencia-col {
-    width: 45%;
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -289,7 +289,43 @@ p {
     object-fit: contain;
 }
 
-/* NOVA SEÇÃO DE PROJETOS */
+@media (min-width: 768px) {
+    #formacao .formacao-experiencia {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 30px;
+        align-items: flex-start; 
+    }
+
+    #formacao .formacao-col, 
+    #formacao .experiencia-col {
+        flex: 1; 
+        padding: 0 15px;
+        max-width: 45%; 
+    }
+}
+
+@media (max-width: 767px) {
+    #formacao .formacao-experiencia {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        align-items: center; 
+    }
+
+    #formacao .formacao-col, 
+    #formacao .experiencia-col {
+        width: 90%; 
+    }
+
+    #formacao h2 {
+        font-size: 2.2em; 
+        min-height: 0; 
+        white-space: normal; 
+    }
+}
+
 #projetos {
     background-color: var(--light-grey);
 }
@@ -378,8 +414,6 @@ p {
     margin-right: 8px;
 }
 
-
-/* SEÇÃO CONTATO */
 #contato {
     background-color: var(--white);
     color: var(--secondary-color);
@@ -403,7 +437,7 @@ p {
     gap: 30px;
     justify-content: center;
     width: 100%;
-    flex-wrap: wrap; /* Para responsividade */
+    flex-wrap: wrap; 
 }
 
 .contact-card {
