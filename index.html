@@ -19,13 +19,12 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    // Cores do Tema Dracula
                     colors: {
-                        'dracula-darker': '#21222C', // Fundo principal
-                        'dracula-dark': '#282A36',   // Fundo secundário (cards)
+                        'dracula-darker': '#21222C', 
+                        'dracula-dark': '#282A36',  
                         'dracula-light': '#44475A',
                         'dracula-foreground': '#F8F8F2',
-                        'dracula-comment': '#6171A2', // Cor da legenda ajustada
+                        'dracula-comment': '#6171A2', 
                         'dracula-cyan': '#8BE9FD',
                         'dracula-green': '#50FA7B',
                         'dracula-orange': '#FFB86C',
@@ -35,8 +34,8 @@
                         'dracula-yellow': '#F1FA8C',
                     },
                     fontFamily: {
-                        'mono': ['"JetBrains Mono"', 'monospace'], // Fonte principal
-                        'logo': ['"Dancing Script"', 'cursive'] // Fonte da logo
+                        'mono': ['"JetBrains Mono"', 'monospace'], 
+                        'logo': ['"Dancing Script"', 'cursive'] 
                     }
                 }
             }
@@ -46,6 +45,8 @@
     <style type="text/tailwindcss">
         html { 
             scroll-behavior: smooth;
+            scroll-snap-type: proximity;
+            scroll-padding-top: 4.5rem;
         }
         body {
             @apply bg-dracula-darker text-dracula-foreground font-mono;
@@ -55,16 +56,14 @@
             -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;
         }
 
-        /* Barra de rolagem minimalista */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #21222C; }
         ::-webkit-scrollbar-thumb { background: #44475A; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #6272A4; }
 
-
-        /* Cada seção principal */
         .section {
             @apply min-h-screen w-full flex items-center justify-center p-8 box-border relative;
+            scroll-snap-align: start;
         }
         
         .section-padded {
@@ -72,20 +71,17 @@
         }
         
         #home {
-            @apply !items-start; 
-            padding-top: 10rem;  /* Adiciona 160px de espaço no topo (ajuste se precisar) */
+            @apply !items-start pt-28 md:pt-40; 
         }
 
         #projetos {
             @apply !items-start !py-32; 
         }
 
-        /* NAVEGAÇÃO LATERAL */
         .nav-link.active {
             @apply bg-dracula-pink text-white;
         }
-        
-        /* ANIMAÇÃO FADE-IN */
+
         .fade-in-up { 
             opacity: 0; 
             transform: translateY(20px); 
@@ -95,10 +91,9 @@
         }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
-        /* ANIMAÇÃO DE DIGITAÇÃO (14ch, 14 steps para espaço) */
         .typing-effect {
             display: inline-block; 
-            width: 13ch; /* 14 caracteres */
+            width: 13ch;
             overflow: hidden;
             white-space: nowrap;
             border-right: 4px solid;
@@ -107,7 +102,6 @@
         @keyframes typing { from { width: 0; } }
         @keyframes blinkCaret { 50% { border-color: transparent; } }
 
-        /* Nova linha animada para títulos PRINCIPAIS */
         .line-anim {
             width: 0;
             height: 4px;
@@ -115,31 +109,26 @@
             transition: width 0.5s ease-out 0.3s;
         }
         .section.is-visible .line-anim {
-            width: 6rem; /* 96px */
+            width: 6rem; 
         }
 
-        /* Nova linha ESTÁTICA para SUB-TÍTULOS */
         .line-static {
-            width: 3rem; /* 48px */
+            width: 3rem;
             height: 2px;
             @apply bg-dracula-pink rounded-full mb-6;
         }
 
-
-        /* Barra de progresso de rolagem */
         #scroll-progress-bar {
             @apply fixed left-0 top-0 w-0 h-0.5 bg-dracula-pink z-[60];
         }
 
-        /* Estilos do formulário */
         .form-input {
             @apply w-full p-3 bg-dracula-light border-2 border-dracula-light rounded-md text-dracula-foreground placeholder-dracula-comment;
             @apply focus:outline-none focus:border-dracula-pink transition-colors;
         }
-        /* MUDANÇA: Desabilitar resize manual */
         textarea.form-input {
             @apply resize-none;
-            overflow: hidden; /* Oculta a barra de rolagem interna */
+            overflow: hidden; 
         }
 
         .btn {
@@ -155,13 +144,11 @@
              @apply bg-transparent border-2 border-dracula-pink text-dracula-pink hover:bg-dracula-pink hover:text-white;
         }
 
-        /* Estilo Hard/Soft Skills */
         .skill-tag {
              @apply bg-dracula-light text-dracula-comment px-4 py-2 rounded-md font-semibold;
              @apply flex items-center gap-2;
         }
-        
-        /* Estilo Card de Projeto */
+
         .project-card {
             @apply bg-dracula-dark rounded-lg shadow-lg border border-dracula-light overflow-hidden flex flex-col;
         }
@@ -181,7 +168,6 @@
             @apply flex items-center justify-center gap-2 px-4 py-2 rounded-md text-sm font-semibold bg-dracula-light hover:bg-dracula-pink hover:text-white transition-all;
         }
         
-        /* Estilo para os botões do seletor de idioma no header */
         .lang-btn {
             @apply text-dracula-comment hover:text-dracula-pink transition-colors;
         }
@@ -202,7 +188,7 @@
                 <a href="https://github.com/EdsonMiziara" target="_blank" title="GitHub" class="text-dracula-comment hover:text-dracula-pink transition-colors"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/edson-miziara" target="_blank" title="LinkedIn" class="text-dracula-comment hover:text-dracula-pink transition-colors"><i class="fab fa-linkedin"></i></a>
                 
-                <div class="hidden md:flex items-center gap-3 text-sm font-semibold">
+                <div class="flex items-center gap-3 text-sm font-semibold">
                     <button id="lang-pt-btn" class="lang-btn active">PT</button>
                     <span class="text-dracula-light">/</span>
                     <button id="lang-en-btn" class="lang-btn">EN</button>
@@ -346,7 +332,7 @@
                             <span class="skill-tag" data-lang-pt="Aprendizado Contínuo" data-lang-en="Continuous Learning">Aprendizado Contínuo</span>
                             <span class="skill-tag" data-lang-pt="Comunicação" data-lang-en="Communication">Comunicação</span>
                             <span class="skill-tag" data-lang-pt="Proatividade" data-lang-en="Proactivity">Proatividade</span>
-                            <span class="skill-tag" data-lang-pt="Trabalho em Equipe" data-lang-en="Teamwork">Trabalho em Equipe</span>
+                            <span class="skill-tag" data-lang-pt="Trabalho em Equipe" data-lang-en="Teamwork">Teamwork</span>
                             <span class="skill-tag" data-lang-pt="Organização" data-lang-en="Organization">Organização</span>
                         </div>
                     </div>
@@ -449,15 +435,14 @@
                     <div class="fade-in-up" style="--delay: 0.3s;">
                         <h3 class="text-2xl font-bold" data-lang-pt="Chame no WhatsApp" data-lang-en="Chat on WhatsApp">Chame no WhatsApp</h3>
                         <div class="line-static"></div>
-                        <form id="whatsapp-form" class="space-y-4">
+                        <div id="whatsapp-form-wrapper" class="space-y-4">
                             <div>
-                                <label for="whatsapp-message" class="block text-sm font-bold mb-2" data-lang-pt="Mensagem" data-lang-en="Quick Message">Mensagem</labe>
+                                <label for="whatsapp-message" class="block text-sm font-bold mb-2" data-lang-pt="Mensagem" data-lang-en="Quick Message">Mensagem</label>
                                 <textarea id="whatsapp-message" rows="4" class="form-input"  data-lang-pt-placeholder="Olá, Edson! Vi seu portfólio..." data-lang-en-placeholder="Hi Edson! I saw your portfolio..."></textarea>
                             </div>
-                            <button type="submit" class="btn btn-secondary w-full" data-lang-pt="Iniciar Conversa" data-lang-en="Start Chat">Iniciar Conversa</button>
-                        </form>
+                            <button type="button" id="whatsapp-submit-btn" class="btn btn-secondary w-full" data-lang-pt="Iniciar Conversa" data-lang-en="Start Chat">Iniciar Conversa</button>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -469,7 +454,6 @@
 
             window.scrollTo(0, 0);
 
-            // --- 1. BARRA DE PROGRESSO DE ROLAGEM ---
             const scrollProgressBar = document.getElementById('scroll-progress-bar');
             window.addEventListener('scroll', () => {
                 const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -481,7 +465,6 @@
                 }
             });
 
-            // --- 2. SCRIPT DE ANIMAÇÃO 'FADE-IN-UP' ---
             const animatedElements = document.querySelectorAll('.fade-in-up');
             const observerFadeIn = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -493,14 +476,13 @@
             }, { threshold: 0.1 });
             animatedElements.forEach(el => observerFadeIn.observe(el));
 
-            // --- 3. SCRIPT DE NAVEGAÇÃO ATIVA (E ANIMAÇÃO DE LINHA) ---
             const sections = document.querySelectorAll('main section');
             const navLinks = document.querySelectorAll('.nav-link');
             
             const observerNav = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     const id = entry.target.id;
-                    const activeLink = document.querySelector('.nav-link[href="#' + id + '"]'); // Alterado para concatenação simples
+                    const activeLink = document.querySelector('.nav-link[href="#' + id + '"]');
 
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
@@ -516,65 +498,47 @@
             });
             sections.forEach(section => observerNav.observe(section));
 
-            // ======================================================
-            // --- 4. SCRIPT DE TRADUÇÃO (CORRIGIDO) ---
-            // ======================================================
             const langBtnEN = document.getElementById('lang-en-btn');
             const langBtnPT = document.getElementById('lang-pt-btn');
             
-            // Verifica se os botões existem antes de continuar
             if (langBtnEN && langBtnPT) {
-                let currentLang = 'pt'; // Padrão
+                let currentLang = 'pt'; 
 
                 function updateLanguage(newLang) {
                     currentLang = newLang;
 
-                    // 1. Atualiza os botões
                     langBtnEN.classList.toggle('active', newLang === 'en');
                     langBtnPT.classList.toggle('active', newLang === 'pt');
 
-                    // 2. Atualiza os textos principais
                     document.querySelectorAll('[data-lang-pt]').forEach(el => {
                         const text = el.getAttribute('data-lang-' + currentLang);
                         if (text) el.textContent = text;
                     });
 
-                    // 3. Atualiza os placeholders
                     document.querySelectorAll('[data-lang-pt-placeholder]').forEach(el => {
                         const text = el.getAttribute('data-lang-' + currentLang + '-placeholder');
                         if (text) el.placeholder = text;
                     });
 
-                    // 4. Atualiza os tooltips (títulos)
                     document.querySelectorAll('[data-lang-pt-title]').forEach(el => {
                         const text = el.getAttribute('data-lang-' + currentLang + '-title');
                         if (text) el.title = text;
                     });
                     
-                    // 5. Atualiza o atributo 'lang' da página
                     document.documentElement.lang = (newLang === 'pt') ? 'pt-BR' : 'en';
                 }
 
-                // Adiciona os eventos de clique
                 langBtnEN.addEventListener('click', () => updateLanguage('en'));
                 langBtnPT.addEventListener('click', () => updateLanguage('pt'));
                 
-                // Define o idioma padrão (PT) na carga inicial
                 updateLanguage('pt'); 
-
-            } else {
-                console.error("Botões de idioma (lang-pt-btn ou lang-en-btn) não encontrados.");
             }
-            // ======================================================
-            // FIM DO SCRIPT DE TRADUÇÃO
-            // ======================================================
 
-
-            // --- 5. SCRIPT DO FORMULÁRIO WHATSAPP ---
-            const whatsappForm = document.getElementById('whatsapp-form');
-            if (whatsappForm) {
-                whatsappForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
+            const whatsappBtn = document.getElementById('whatsapp-submit-btn'); 
+            
+            if (whatsappBtn) {
+                whatsappBtn.addEventListener('click', () => {
+                    
                     const phoneNumber = '5534997766055'; 
                     const messageEl = document.getElementById('whatsapp-message');
                     if (messageEl) {
@@ -585,13 +549,12 @@
                     }
                 });
             }
-            
-            // --- 6. SCRIPT TEXTAREA AUTO-GROW ---
+
             const textareas = document.querySelectorAll('textarea.form-input');
             textareas.forEach(textarea => {
                 textarea.addEventListener('input', () => {
-                    textarea.style.height = 'auto'; // Reseta para calcular o novo scrollHeight
-                    textarea.style.height = textarea.scrollHeight + 'px'; // Ajusta a altura (sem template literal)
+                    textarea.style.height = 'auto'; 
+                    textarea.style.height = textarea.scrollHeight + 'px'; 
                 });
             });
 
